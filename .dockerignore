@@ -1,0 +1,51 @@
+# Ignorer les fichiers de développement
+.git
+.gitignore
+.dockerignore
+README.md
+LICENSE
+
+# Ignorer les fichiers temporaires
+*.tmp
+*.temp
+*.log
+
+# Ignorer les fichiers de configuration IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Ignorer les fichiers de cache
+.DS_Store
+Thumbs.db
+
+# Ignorer les fichiers sensibles (si présents)
+.env
+.env.local
+.env.production
+
+# Ignorer les captures d'écran et documentation
+*.png
+*.jpg
+*.gif
+indexe.png
+modale_newsletter.png
+modale_remarque.png
+projet_bts.png
+projet_ent.png
+projet_pro.png
+
+# Ignorer les dossiers de build et cache
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignorer les clés DKIM (les copier manuellement si nécessaire)
+dkim.private.key
+dkim.public.key
+
+# Ignorer les logs locaux
+logs/
+*.log
