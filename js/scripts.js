@@ -48,6 +48,11 @@ window.addEventListener('DOMContentLoaded', event => {
         elements: '#portfolio_anthony a.portfolio_anthony-box'
     });
 
+    // Lightbox pour le CV (avec bouton de fermeture par défaut)
+    new SimpleLightbox({
+        elements: '#cv a.cv-lightbox'
+    });
+
     // Dynamic age calculation
     const ageElement = document.getElementById('age');
     if (ageElement) {
