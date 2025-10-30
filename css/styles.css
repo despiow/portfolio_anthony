@@ -148,6 +148,12 @@ body, .navbar, .btn, .card, .page-section, .nav-link, .navbar-brand {
   transform: translateY(0);
 }
 
+/* S'assurer que la lightbox est au-dessus de la navbar */
+.sl-overlay { z-index: 1060; }
+.sl-wrapper { z-index: 1065; }
+.sl-wrapper .sl-close { color: #fff; }
+[data-theme="dark"] .sl-wrapper .sl-close { color: #e5e7eb; }
+
 *,
 *::before,
 *::after {

@@ -45,12 +45,31 @@ window.addEventListener('DOMContentLoaded', event => {
 
     // Activate SimpleLightbox plugin for portfolio_anthony items
     new SimpleLightbox({
-        elements: '#portfolio_anthony a.portfolio_anthony-box'
+        elements: '#portfolio_anthony a.portfolio_anthony-box',
+        close: true,
+        closeText: '×',
+        history: false
     });
 
-    // Lightbox pour le CV (avec bouton de fermeture par défaut)
-    new SimpleLightbox({
-        elements: '#cv a.cv-lightbox'
+    // Lightbox pour le CV (avec bouton de fermeture)
+    const cvLightbox = new SimpleLightbox({
+        elements: '.cv-lightbox',
+        close: true,
+        closeText: '×',
+        history: false,
+        captions: false,
+        animationSpeed: 200
+    });
+    document.querySelectorAll('.cv-lightbox').forEach((a) => {
+        a.addEventListener('click', (ev) => {
+            // si la lightbox ne s'ouvre pas, empêcher la navigation et forcer l'ouverture
+            setTimeout(() => {
+                if (!document.querySelector('.sl-wrapper')) {
+                    ev.preventDefault();
+                    cvLightbox.open(a);
+                }
+            }, 0);
+        });
     });
 
     // Dynamic age calculation
@@ -68,10 +87,12 @@ window.addEventListener('DOMContentLoaded', event => {
 
     // Theme toggle (light/dark)
     const root = document.documentElement;
+    const bodyEl = document.body;
     const themeToggleBtn = document.getElementById('themeToggle');
 
     const applyTheme = (theme) => {
         root.setAttribute('data-theme', theme);
+        if (bodyEl) bodyEl.setAttribute('data-theme', theme);
         if (themeToggleBtn) {
             themeToggleBtn.innerHTML = theme === 'dark'
                 ? '<i class="bi bi-sun"></i>'
@@ -87,14 +108,21 @@ window.addEventListener('DOMContentLoaded', event => {
         applyTheme(prefersDark ? 'dark' : 'light');
     }
 
-    if (themeToggleBtn) {
-        themeToggleBtn.addEventListener('click', () => {
-            const current = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
-            const next = current === 'dark' ? 'light' : 'dark';
-            applyTheme(next);
-            localStorage.setItem('theme', next);
-        });
-    }
+    const handleThemeToggle = () => {
+        const current = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+        const next = current === 'dark' ? 'light' : 'dark';
+        applyTheme(next);
+        localStorage.setItem('theme', next);
+    };
+    if (themeToggleBtn) themeToggleBtn.addEventListener('click', handleThemeToggle);
+    // Fallback: délégation (si le bouton est re-généré)
+    document.addEventListener('click', (e) => {
+        const t = e.target;
+        if (t && (t.id === 'themeToggle' || (t.closest && t.closest('#themeToggle')))) {
+            e.preventDefault();
+            handleThemeToggle();
+        }
+    });
 
     // Reveal on scroll animations (sections & portfolio items)
     const revealElements = [
