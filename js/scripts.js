@@ -60,4 +60,34 @@ window.addEventListener('DOMContentLoaded', event => {
         }
         ageElement.textContent = String(age);
     }
+
+    // Theme toggle (light/dark)
+    const root = document.documentElement;
+    const themeToggleBtn = document.getElementById('themeToggle');
+
+    const applyTheme = (theme) => {
+        root.setAttribute('data-theme', theme);
+        if (themeToggleBtn) {
+            themeToggleBtn.innerHTML = theme === 'dark'
+                ? '<i class="bi bi-sun"></i>'
+                : '<i class="bi bi-moon-stars"></i>';
+        }
+    };
+
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light' || savedTheme === 'dark') {
+        applyTheme(savedTheme);
+    } else {
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        applyTheme(prefersDark ? 'dark' : 'light');
+    }
+
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            const current = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+            const next = current === 'dark' ? 'light' : 'dark';
+            applyTheme(next);
+            localStorage.setItem('theme', next);
+        });
+    }
 });
