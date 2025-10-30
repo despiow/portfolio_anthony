@@ -90,4 +90,27 @@ window.addEventListener('DOMContentLoaded', event => {
             localStorage.setItem('theme', next);
         });
     }
+
+    // Reveal on scroll animations (sections & portfolio items)
+    const revealElements = [
+        ...document.querySelectorAll('.page-section'),
+        ...document.querySelectorAll('#portfolio_anthony .portfolio_anthony-item')
+    ];
+    revealElements.forEach(el => el.classList.add('reveal'));
+
+    const io = ('IntersectionObserver' in window) ? new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                io.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12 }) : null;
+
+    if (io) {
+        revealElements.forEach(el => io.observe(el));
+    } else {
+        // Fallback: tout rendre visible sans animation
+        revealElements.forEach(el => el.classList.add('is-visible'));
+    }
 });

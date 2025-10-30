@@ -94,6 +94,60 @@
   --bs-body-bg-rgb: 11, 18, 32;
 }
 
+/* Transitions globales douces */
+body, .navbar, .btn, .card, .page-section, .nav-link, .navbar-brand {
+  transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
+}
+
+/* Navbar contrastes en sombre */
+[data-theme="dark"] .navbar.navbar-light .navbar-brand,
+[data-theme="dark"] .navbar.navbar-light .nav-link {
+  color: #e5e7eb;
+}
+[data-theme="dark"] .navbar.navbar-light .nav-link:hover,
+[data-theme="dark"] .navbar.navbar-light .nav-link:focus {
+  color: #c7d2fe;
+}
+
+/* Liens actifs plus visibles */
+.navbar .nav-link {
+  text-decoration: none;
+  position: relative;
+}
+.navbar .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background-color: var(--bs-link-color);
+  transition: width 200ms ease;
+}
+.navbar .nav-link:hover::after,
+.navbar .nav-link:focus::after,
+.navbar .nav-link.active::after {
+  width: 100%;
+}
+
+/* Assurer l'affichage des miniatures des projets */
+#portfolio_anthony .portfolio_anthony-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Animation reveal simple */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 400ms ease, transform 400ms ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 *,
 *::before,
 *::after {
