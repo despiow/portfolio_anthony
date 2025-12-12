@@ -303,4 +303,14 @@ window.addEventListener('DOMContentLoaded', event => {
             this.style.cursor = 'pointer';
         });
     });
+
+    // Handle image loading errors and retry with cache busting
+    const portfolioImages = document.querySelectorAll('#portfolio_anthony img');
+    portfolioImages.forEach(img => {
+        img.addEventListener('error', function() {
+            // If image fails to load, try reloading with timestamp
+            const src = this.src.split('?')[0];
+            this.src = src + '?t=' + Date.now();
+        });
+    });
 });

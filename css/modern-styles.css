@@ -497,7 +497,16 @@ body {
 .portfolio_anthony-box img {
   width: 100%;
   height: auto;
+  min-height: 250px;
+  object-fit: cover;
+  display: block;
   transition: transform var(--transition-slow);
+}
+
+@media (min-width: 768px) {
+  .portfolio_anthony-box img {
+    min-height: 300px;
+  }
 }
 
 .portfolio_anthony-box:hover img {
@@ -562,8 +571,15 @@ body {
 .portfolio-name {
   font-size: 1.2rem;
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   color: var(--bs-body-color);
+}
+
+.portfolio-info .portfolio_anthony-description {
+  color: var(--bs-body-color);
+  opacity: 0.8;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
 }
 
 /* Contact Section */
