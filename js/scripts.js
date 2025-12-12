@@ -124,6 +124,19 @@ window.addEventListener('DOMContentLoaded', event => {
         }
     });
 
+    // Initialize AOS (Animate On Scroll)
+    if (typeof AOS !== 'undefined') {
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            offset: 100,
+            disable: function() {
+                return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            }
+        });
+    }
+
     // Reveal on scroll animations (sections & portfolio items)
     const revealElements = [
         ...document.querySelectorAll('.page-section'),
@@ -146,4 +159,148 @@ window.addEventListener('DOMContentLoaded', event => {
         // Fallback: tout rendre visible sans animation
         revealElements.forEach(el => el.classList.add('is-visible'));
     }
+
+    // Animate skill bars on scroll
+    const skillBars = document.querySelectorAll('.skill-progress');
+    const skillObserver = ('IntersectionObserver' in window) ? new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const skillValue = entry.target.getAttribute('data-skill');
+                if (skillValue) {
+                    entry.target.style.width = skillValue + '%';
+                }
+                skillObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 }) : null;
+
+    if (skillObserver) {
+        skillBars.forEach(bar => {
+            bar.style.width = '0%';
+            skillObserver.observe(bar);
+        });
+    } else {
+        // Fallback: afficher les barres sans animation
+        skillBars.forEach(bar => {
+            const skillValue = bar.getAttribute('data-skill');
+            if (skillValue) {
+                bar.style.width = skillValue + '%';
+            }
+        });
+    }
+
+    // Set current year in footer
+    const currentYearElement = document.getElementById('currentYear');
+    if (currentYearElement) {
+        currentYearElement.textContent = new Date().getFullYear();
+    }
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href !== '#' && href.length > 1) {
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    const offsetTop = target.offsetTop - 80; // Account for fixed navbar
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
+    });
+
+    // Parallax effect for hero section (desktop only)
+    const masthead = document.querySelector('.masthead');
+    if (masthead && window.innerWidth > 768) {
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop < window.innerHeight) {
+                const parallaxValue = scrollTop * 0.5;
+                masthead.style.transform = `translateY(${parallaxValue}px)`;
+            }
+        }, { passive: true });
+    }
+
+    // Hide scroll indicator when scrolling
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    if (scrollIndicator) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                scrollIndicator.style.opacity = '0';
+                scrollIndicator.style.transition = 'opacity 0.3s ease';
+            } else {
+                scrollIndicator.style.opacity = '1';
+            }
+        }, { passive: true });
+    }
+
+    // Form validation enhancement
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            const inputs = this.querySelectorAll('input[required], textarea[required]');
+            let isValid = true;
+
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    isValid = false;
+                    input.classList.add('is-invalid');
+                } else {
+                    input.classList.remove('is-invalid');
+                }
+            });
+
+            // Email validation
+            const emailInput = this.querySelector('input[type="email"]');
+            if (emailInput && emailInput.value) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(emailInput.value)) {
+                    isValid = false;
+                    emailInput.classList.add('is-invalid');
+                }
+            }
+
+            if (!isValid) {
+                e.preventDefault();
+                // Show error message
+                const errorDiv = document.getElementById('submitErrorMessage');
+                if (errorDiv) {
+                    errorDiv.classList.remove('d-none');
+                    setTimeout(() => {
+                        errorDiv.classList.add('d-none');
+                    }, 5000);
+                }
+            }
+        });
+
+        // Remove invalid class on input
+        contactForm.querySelectorAll('input, textarea').forEach(input => {
+            input.addEventListener('input', function() {
+                if (this.classList.contains('is-invalid')) {
+                    this.classList.remove('is-invalid');
+                }
+            });
+        });
+    }
+
+    // Add loading state to submit button
+    const submitButton = document.getElementById('submit');
+    if (submitButton && contactForm) {
+        contactForm.addEventListener('submit', function() {
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Envoi en cours...';
+        });
+    }
+
+    // Cursor effect for interactive elements (optional enhancement)
+    const interactiveElements = document.querySelectorAll('a, button, .btn');
+    interactiveElements.forEach(element => {
+        element.addEventListener('mouseenter', function() {
+            this.style.cursor = 'pointer';
+        });
+    });
 });
