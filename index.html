@@ -392,14 +392,26 @@
                                 <label for="message"><i class="bi bi-chat-dots me-2"></i>Message</label>
                                 <div class="invalid-feedback" data-sb-feedback="message:required">Le message est obligatoire</div>
                             </div>
-                            <div class="d-none" id="submitErrorMessage">
-                                <div class="alert alert-danger text-center mb-3">Erreur lors de l'envoi du message!</div>
+                            <!-- Messages de succès/erreur -->
+                            <div id="submitSuccessMessage" class="d-none">
+                                <div class="alert alert-success alert-dismissible fade show text-center mb-3" role="alert">
+                                    <i class="bi bi-check-circle-fill me-2"></i>
+                                    <span id="successMessageText"></span>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            </div>
+                            <div id="submitErrorMessage" class="d-none">
+                                <div class="alert alert-danger alert-dismissible fade show text-center mb-3" role="alert">
+                                    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                                    <span id="errorMessageText"></span>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
                             </div>
                             <!-- Submit Button-->
                             <div class="d-grid">
                                 <button class="btn btn-primary btn-xl btn-modern" id="submit" type="submit">
-                                    <span>Envoyer le message</span>
-                                    <i class="bi bi-send ms-2"></i>
+                                    <span id="submitButtonText">Envoyer le message</span>
+                                    <i class="bi bi-send ms-2" id="submitButtonIcon"></i>
                                 </button>
                             </div>
                         </form>

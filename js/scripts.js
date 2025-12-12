@@ -238,12 +238,27 @@ window.addEventListener('DOMContentLoaded', event => {
         }, { passive: true });
     }
 
-    // Form validation enhancement
+    // Form validation and AJAX submission
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
+        const submitButton = document.getElementById('submit');
+        const submitButtonText = document.getElementById('submitButtonText');
+        const submitButtonIcon = document.getElementById('submitButtonIcon');
+        const successMessage = document.getElementById('submitSuccessMessage');
+        const errorMessage = document.getElementById('submitErrorMessage');
+        const successMessageText = document.getElementById('successMessageText');
+        const errorMessageText = document.getElementById('errorMessageText');
+
         contactForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Empêcher la soumission classique
+
+            // Validation côté client
             const inputs = this.querySelectorAll('input[required], textarea[required]');
             let isValid = true;
+
+            // Réinitialiser les messages
+            successMessage.classList.add('d-none');
+            errorMessage.classList.add('d-none');
 
             inputs.forEach(input => {
                 if (!input.value.trim()) {
@@ -265,16 +280,94 @@ window.addEventListener('DOMContentLoaded', event => {
             }
 
             if (!isValid) {
-                e.preventDefault();
-                // Show error message
-                const errorDiv = document.getElementById('submitErrorMessage');
-                if (errorDiv) {
-                    errorDiv.classList.remove('d-none');
-                    setTimeout(() => {
-                        errorDiv.classList.add('d-none');
-                    }, 5000);
+                errorMessageText.textContent = 'Veuillez remplir tous les champs correctement.';
+                errorMessage.classList.remove('d-none');
+                // Scroll to error message
+                errorMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                return;
+            }
+
+            // Désactiver le bouton et afficher le chargement
+            if (submitButton) {
+                submitButton.disabled = true;
+                if (submitButtonText) submitButtonText.textContent = 'Envoi en cours...';
+                if (submitButtonIcon) {
+                    submitButtonIcon.className = 'spinner-border spinner-border-sm ms-2';
                 }
             }
+
+            // Préparer les données du formulaire
+            const formData = new FormData(this);
+
+            // Envoyer la requête AJAX
+            fetch('./src/send_email.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Succès
+                    successMessageText.textContent = data.message;
+                    successMessage.classList.remove('d-none');
+                    contactForm.reset();
+                    
+                    // Scroll to success message
+                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    
+                    // Réactiver le bouton
+                    if (submitButton) {
+                        submitButton.disabled = false;
+                        if (submitButtonText) submitButtonText.textContent = 'Envoyer le message';
+                        if (submitButtonIcon) {
+                            submitButtonIcon.className = 'bi bi-send ms-2';
+                        }
+                    }
+
+                    // Masquer le message après 5 secondes
+                    setTimeout(() => {
+                        successMessage.classList.add('d-none');
+                    }, 10000);
+                } else {
+                    // Erreur
+                    errorMessageText.textContent = data.message || 'Une erreur est survenue. Veuillez réessayer.';
+                    errorMessage.classList.remove('d-none');
+                    
+                    // Scroll to error message
+                    errorMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    
+                    // Réactiver le bouton
+                    if (submitButton) {
+                        submitButton.disabled = false;
+                        if (submitButtonText) submitButtonText.textContent = 'Envoyer le message';
+                        if (submitButtonIcon) {
+                            submitButtonIcon.className = 'bi bi-send ms-2';
+                        }
+                    }
+
+                    // Masquer le message après 5 secondes
+                    setTimeout(() => {
+                        errorMessage.classList.add('d-none');
+                    }, 10000);
+                }
+            })
+            .catch(error => {
+                // Erreur réseau
+                errorMessageText.textContent = 'Erreur de connexion. Veuillez vérifier votre connexion internet et réessayer.';
+                errorMessage.classList.remove('d-none');
+                
+                // Scroll to error message
+                errorMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                
+                // Réactiver le bouton
+                if (submitButton) {
+                    submitButton.disabled = false;
+                    if (submitButtonText) submitButtonText.textContent = 'Envoyer le message';
+                    if (submitButtonIcon) {
+                        submitButtonIcon.className = 'bi bi-send ms-2';
+                    }
+                }
+            });
         });
 
         // Remove invalid class on input
@@ -283,16 +376,11 @@ window.addEventListener('DOMContentLoaded', event => {
                 if (this.classList.contains('is-invalid')) {
                     this.classList.remove('is-invalid');
                 }
+                // Masquer les messages d'erreur quand l'utilisateur tape
+                if (errorMessage && !errorMessage.classList.contains('d-none')) {
+                    errorMessage.classList.add('d-none');
+                }
             });
-        });
-    }
-
-    // Add loading state to submit button
-    const submitButton = document.getElementById('submit');
-    if (submitButton && contactForm) {
-        contactForm.addEventListener('submit', function() {
-            submitButton.disabled = true;
-            submitButton.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Envoi en cours...';
         });
     }
 
