@@ -1,44 +1,37 @@
-/* ═══════════════════════════════════════════════════
-   PORTFOLIO — ANTHONY JARDY — Scripts 2026
-   Vanilla JS, zéro dépendance externe
-   ═══════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════
+   ANTHONY JARDY — Portfolio Scripts
+   Vanilla JS — zéro dépendance externe
+   ═══════════════════════════════════════════ */
 
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ── Scroll progress bar ── */
-    const progressBar = document.createElement('div');
-    progressBar.id = 'progress-bar';
-    document.body.prepend(progressBar);
+    const progressBar = document.getElementById('scrollProgress');
     window.addEventListener('scroll', () => {
         const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
         progressBar.style.width = pct + '%';
     }, { passive: true });
 
 
-    /* ── Navbar : shrink + active link ── */
-    const navbar = document.getElementById('navbar');
+    /* ── Navbar : fond au scroll + lien actif ── */
+    const navbar   = document.getElementById('navbar');
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('section[id]');
 
-    const updateNavbar = () => {
+    window.addEventListener('scroll', () => {
         navbar.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
 
-        // Active link via IntersectionObserver
-    };
-    window.addEventListener('scroll', updateNavbar, { passive: true });
-    updateNavbar();
-
-    // Active nav via scroll position
-    const observeNav = new IntersectionObserver((entries) => {
+    const navObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                navLinks.forEach(l => l.classList.remove('active'));
-                const link = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
-                if (link) link.classList.add('active');
-            }
+            if (!entry.isIntersecting) return;
+            navLinks.forEach(l => l.classList.remove('active'));
+            const link = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
+            if (link) link.classList.add('active');
         });
     }, { rootMargin: '-40% 0px -55% 0px' });
-    sections.forEach(s => observeNav.observe(s));
+    sections.forEach(s => navObserver.observe(s));
 
 
     /* ── Menu mobile ── */
@@ -46,42 +39,40 @@ document.addEventListener('DOMContentLoaded', () => {
     const navMenu    = document.getElementById('navMenu');
 
     menuToggle.addEventListener('click', () => {
-        const open = navMenu.classList.toggle('open');
-        menuToggle.classList.toggle('open', open);
-        menuToggle.setAttribute('aria-expanded', String(open));
+        const isOpen = navMenu.classList.toggle('open');
+        menuToggle.classList.toggle('active', isOpen);
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
     });
 
-    // Fermer au clic sur un lien
     navMenu.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', () => {
             navMenu.classList.remove('open');
-            menuToggle.classList.remove('open');
+            menuToggle.classList.remove('active');
             menuToggle.setAttribute('aria-expanded', 'false');
         });
     });
 
 
     /* ── Thème dark / light ── */
-    const themeBtn = document.getElementById('themeToggle');
-    const root     = document.documentElement;
+    const themeBtn  = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const root      = document.documentElement;
 
-    const setTheme = (theme) => {
+    const applyTheme = (theme) => {
         root.setAttribute('data-theme', theme);
         localStorage.setItem('theme', theme);
-        themeBtn.innerHTML = theme === 'dark'
-            ? '<i class="bi bi-sun"></i>'
-            : '<i class="bi bi-moon-stars"></i>';
+        themeIcon.className = theme === 'dark' ? 'bi bi-sun-fill' : 'bi bi-moon-stars-fill';
     };
 
-    const saved = localStorage.getItem('theme');
-    if (saved === 'light' || saved === 'dark') {
-        setTheme(saved);
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark' || savedTheme === 'light') {
+        applyTheme(savedTheme);
     } else {
-        setTheme(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        applyTheme(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     }
 
     themeBtn.addEventListener('click', () => {
-        setTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+        applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
     });
 
 
@@ -90,26 +81,26 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typedEl) {
         const words = ['Web', 'Front-End', 'PHP', 'créatif'];
         let wi = 0, ci = 0, deleting = false;
-        const type = () => {
+        const tick = () => {
             const word = words[wi];
             typedEl.textContent = deleting ? word.slice(0, ci--) : word.slice(0, ci++);
-            let delay = deleting ? 60 : 110;
-            if (!deleting && ci > word.length)  { deleting = true; delay = 1400; }
+            let delay = deleting ? 65 : 110;
+            if (!deleting && ci > word.length)  { deleting = true; delay = 1600; }
             if (deleting  && ci < 0)            { deleting = false; wi = (wi + 1) % words.length; delay = 400; }
-            setTimeout(type, delay);
+            setTimeout(tick, delay);
         };
-        setTimeout(type, 600);
+        setTimeout(tick, 800);
     }
 
 
     /* ── Âge dynamique ── */
     const ageEl = document.getElementById('age');
     if (ageEl) {
-        const birth = new Date(2000, 6, 26);
-        const today = new Date();
-        let age = today.getFullYear() - birth.getFullYear();
-        const m = today.getMonth() - birth.getMonth();
-        if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) age--;
+        const birth = new Date(2000, 6, 26); // 26 juillet 2000
+        const now   = new Date();
+        let age     = now.getFullYear() - birth.getFullYear();
+        const m     = now.getMonth() - birth.getMonth();
+        if (m < 0 || (m === 0 && now.getDate() < birth.getDate())) age--;
         ageEl.textContent = age;
     }
 
@@ -120,36 +111,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ── Reveal on scroll ── */
-    const revealEls = document.querySelectorAll('.reveal');
     const revealObs = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                revealObs.unobserve(entry.target);
-            }
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('visible');
+            revealObs.unobserve(entry.target);
         });
-    }, { threshold: 0.12 });
-    revealEls.forEach(el => revealObs.observe(el));
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
 
     /* ── Skill bars animées ── */
-    const skillFills = document.querySelectorAll('.skill-fill');
     const skillObs = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const w = entry.target.getAttribute('data-w');
-                if (w) entry.target.style.width = w + '%';
-                skillObs.unobserve(entry.target);
-            }
+            if (!entry.isIntersecting) return;
+            const w = entry.target.getAttribute('data-w');
+            if (w) entry.target.style.width = w + '%';
+            skillObs.unobserve(entry.target);
         });
-    }, { threshold: 0.4 });
-    skillFills.forEach(b => skillObs.observe(b));
+    }, { threshold: 0.3 });
+    document.querySelectorAll('.skill-bar[data-w]').forEach(bar => skillObs.observe(bar));
 
 
-    /* ── Lightbox projets ── */
+    /* ── Lightbox ── */
     if (typeof SimpleLightbox !== 'undefined') {
-        new SimpleLightbox({ elements: '.lightbox-link', close: true, closeText: '×', history: false });
-        new SimpleLightbox({ elements: '.lightbox-cv',   close: true, closeText: '×', history: false, captions: false });
+        new SimpleLightbox({ elements: '.lightbox-link', closeText: '×', history: false });
+        new SimpleLightbox({ elements: '.lightbox-cv',   closeText: '×', history: false, captions: false });
     }
 
 
@@ -163,63 +150,63 @@ document.addEventListener('DOMContentLoaded', () => {
     const successText = document.getElementById('successText');
     const errorText   = document.getElementById('errorText');
 
-    if (form) {
-        const validate = () => {
-            let ok = true;
-            form.querySelectorAll('[required]').forEach(field => {
-                const group = field.closest('.form-group');
-                const empty = !field.value.trim();
-                const emailBad = field.type === 'email' && field.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value);
-                const invalid = empty || emailBad;
-                group.classList.toggle('has-error', invalid);
-                field.classList.toggle('invalid', invalid);
-                if (invalid) ok = false;
-            });
-            return ok;
-        };
+    if (!form) return;
 
-        // Effacer erreur en temps réel
-        form.querySelectorAll('input, textarea').forEach(f => {
-            f.addEventListener('input', () => {
-                f.closest('.form-group').classList.remove('has-error');
-                f.classList.remove('invalid');
-            });
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    const setFieldError = (field, hasError) => {
+        field.closest('.form-group').classList.toggle('error', hasError);
+    };
+
+    const validate = () => {
+        let valid = true;
+        form.querySelectorAll('[required]').forEach(field => {
+            const empty    = !field.value.trim();
+            const badEmail = field.type === 'email' && field.value.trim() && !EMAIL_RE.test(field.value.trim());
+            const err      = empty || badEmail;
+            setFieldError(field, err);
+            if (err) valid = false;
         });
+        return valid;
+    };
 
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            formSuccess.hidden = true;
-            formError.hidden   = true;
-            if (!validate()) return;
+    form.querySelectorAll('input, textarea').forEach(field => {
+        field.addEventListener('input', () => setFieldError(field, false));
+    });
 
-            submitBtn.disabled  = true;
-            submitLabel.textContent = 'Envoi en cours…';
-            submitIcon.className = 'bi bi-hourglass-split';
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        formSuccess.hidden = true;
+        formError.hidden   = true;
+        if (!validate()) return;
 
-            try {
-                const res  = await fetch('./src/send_email.php', { method: 'POST', body: new FormData(form) });
-                const data = await res.json();
+        submitBtn.disabled      = true;
+        submitLabel.textContent = 'Envoi en cours…';
+        submitIcon.className    = 'bi bi-hourglass-split';
 
-                if (data.success) {
-                    successText.textContent = data.message;
-                    formSuccess.hidden = false;
-                    form.reset();
-                    formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                    setTimeout(() => { formSuccess.hidden = true; }, 10000);
-                } else {
-                    errorText.textContent = data.message || 'Une erreur est survenue.';
-                    formError.hidden = false;
-                    formError.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                }
-            } catch {
-                errorText.textContent = 'Erreur réseau. Vérifiez votre connexion et réessayez.';
+        try {
+            const res  = await fetch('./src/send_email.php', { method: 'POST', body: new FormData(form) });
+            const data = await res.json();
+
+            if (data.success) {
+                successText.textContent = data.message;
+                formSuccess.hidden = false;
+                form.reset();
+                formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                setTimeout(() => { formSuccess.hidden = true; }, 10000);
+            } else {
+                errorText.textContent = data.message || 'Une erreur est survenue.';
                 formError.hidden = false;
-            } finally {
-                submitBtn.disabled  = false;
-                submitLabel.textContent = 'Envoyer le message';
-                submitIcon.className = 'bi bi-send';
+                formError.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             }
-        });
-    }
+        } catch {
+            errorText.textContent = 'Erreur réseau. Vérifiez votre connexion et réessayez.';
+            formError.hidden = false;
+        } finally {
+            submitBtn.disabled      = false;
+            submitLabel.textContent = 'Envoyer le message';
+            submitIcon.className    = 'bi bi-send';
+        }
+    });
 
 });
