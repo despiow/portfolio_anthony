@@ -457,7 +457,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 /* ── SKILLS ── */
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
 }
 
@@ -771,7 +771,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
     .projects-grid { grid-template-columns: repeat(2, 1fr); }
-    .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    .skills-grid   { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
