@@ -1,458 +1,348 @@
 <!DOCTYPE html>
-<html lang="fr">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="Portfolio de JARDY Anthony - Développeur Web passionné" />
-        <meta name="author" content="JARDY Anthony" />
-        <title>JARDY Anthony - Développeur Web</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/icon.png" />
-        <!-- Bootstrap Icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- Devicon (icônes de langages) -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
-        <!-- Google fonts modernes-->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-        <!-- fontawesome -->
-        <script src="https://kit.fontawesome.com/779f50a366.js" crossorigin="anonymous"></script>
-        <!-- SimpleLightbox plugin CSS-->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
-        <!-- AOS - Animate On Scroll -->
-        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css?v=20250101" rel="stylesheet" />
-        <!-- Modern Styles -->
-        <link href="css/modern-styles.css?v=20250101" rel="stylesheet" />
-    </head>
-    <body id="page-top">
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
-            <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#page-top">JARDY ANTHONY</a>
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto my-2 my-lg-0 align-items-lg-center">
-                        <li class="nav-item"><a class="nav-link" href="#moi">Qui suis-je ? </a></li>
-                        <li class="nav-item"><a class="nav-link" href="#cv">Mon CV </a></li>
-                        <li class="nav-item"><a class="nav-link" href="#portfolio_anthony">Mes projets</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                        <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
-                            <button id="themeToggle" class="btn btn-outline-primary btn-sm" type="button" aria-label="Basculer le thème">
-                                <i class="bi bi-moon-stars"></i>
-                            </button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!-- Masthead-->
-        <header class="masthead">
-            <div class="masthead-background"></div>
-            <div class="container px-4 px-lg-5 h-100">
-                <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
-                    <div class="col-lg-10 align-self-end">
-                        <h1 class="text-white font-weight-bold hero-title" data-aos="fade-up" data-aos-duration="800">
-                            <span class="gradient-text">Bienvenue !</span>
-                        </h1>
-                        <p class="text-white hero-subtitle mt-4" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
-                            Je suis <strong>Anthony JARDY</strong>, développeur web passionné
-                        </p>
-                        <hr class="divider divider-light" data-aos="fade-up" data-aos-delay="300" />
-                    </div>
-                    <div class="col-lg-8 align-self-baseline">
-                        <p class="text-white-75 mb-5 hero-description" data-aos="fade-up" data-aos-delay="400">
-                            Créateur de solutions web modernes et performantes
-                        </p>
-                        <div class="hero-buttons" data-aos="fade-up" data-aos-delay="500">
-                            <a class="btn btn-primary btn-xl btn-modern" href="#langages">
-                                <span>Découvrir mes compétences</span>
-                                <i class="bi bi-arrow-down ms-2"></i>
-                            </a>
-                            <a class="btn btn-outline-light btn-xl btn-modern ms-3" href="#portfolio_anthony">
-                                <span>Voir mes projets</span>
-                                <i class="bi bi-briefcase ms-2"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="scroll-indicator">
-                <div class="mouse">
-                    <div class="wheel"></div>
-                </div>
-            </div>
-        </header>
+<html lang="fr" data-theme="dark">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Portfolio de JARDY Anthony - Développeur Web passionné" />
+    <meta name="author" content="JARDY Anthony" />
+    <title>JARDY Anthony — Développeur Web</title>
+    <link rel="icon" type="image/png" href="assets/icon.png" />
 
-        <!-- Langages-->
-        <section class="page-section bg-light skills-section" id="langages">
-            <div class="container px-4 px-lg-5">
-                <div class="text-center mb-5" data-aos="fade-up">
-                    <h2 class="section-title">Mes Compétences</h2>
-                    <hr class="divider divider-primary" />
-                    <p class="text-muted section-subtitle">Technologies que je maîtrise</p>
-                </div>
-                <div class="row gx-4 gx-lg-5">
-                    <div class="col-lg-3 col-md-6 text-center mb-4" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="skill-card">
-                            <div class="skill-icon">
-                                <i class="devicon-html5-plain colored"></i>
-                            </div>
-                            <h3 class="h5 mb-2 mt-3">HTML5</h3>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-skill="90"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 text-center mb-4" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="skill-card">
-                            <div class="skill-icon">
-                                <i class="devicon-css3-plain colored"></i>
-                            </div>
-                            <h3 class="h5 mb-2 mt-3">CSS3</h3>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-skill="85"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 text-center mb-4" data-aos="zoom-in" data-aos-delay="300">
-                        <div class="skill-card">
-                            <div class="skill-icon">
-                                <i class="devicon-bootstrap-plain colored"></i>
-                            </div>
-                            <h3 class="h5 mb-2 mt-3">Bootstrap</h3>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-skill="80"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 text-center mb-4" data-aos="zoom-in" data-aos-delay="400">
-                        <div class="skill-card">
-                            <div class="skill-icon">
-                                <i class="devicon-tailwindcss-plain colored"></i>
-                            </div>
-                            <h3 class="h5 mb-2 mt-3">Tailwind CSS</h3>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-skill="75"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 text-center mb-4" data-aos="zoom-in" data-aos-delay="500">
-                        <div class="skill-card">
-                            <div class="skill-icon">
-                                <i class="devicon-javascript-plain colored"></i>
-                            </div>
-                            <h3 class="h5 mb-2 mt-3">JavaScript</h3>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-skill="80"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 text-center mb-4" data-aos="zoom-in" data-aos-delay="600">
-                        <div class="skill-card">
-                            <div class="skill-icon">
-                                <i class="devicon-php-plain colored"></i>
-                            </div>
-                            <h3 class="h5 mb-2 mt-3">PHP</h3>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-skill="75"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 text-center mb-4" data-aos="zoom-in" data-aos-delay="700">
-                        <div class="skill-card">
-                            <div class="skill-icon">
-                                <i class="devicon-mysql-plain colored"></i>
-                            </div>
-                            <h3 class="h5 mb-2 mt-3">SQL</h3>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-skill="70"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
+
+    <!-- Lightbox -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+
+    <!-- Styles -->
+    <link href="css/styles.css?v=20260309" rel="stylesheet" />
+</head>
+<body>
+
+    <!-- ── NAVIGATION ── -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-brand">AJ<span class="dot">.</span></a>
+            <div class="nav-menu" id="navMenu">
+                <a href="#about" class="nav-link">À propos</a>
+                <a href="#skills" class="nav-link">Compétences</a>
+                <a href="#projects" class="nav-link">Projets</a>
+                <a href="#cv" class="nav-link">CV</a>
+                <a href="#contact" class="nav-link">Contact</a>
             </div>
-        </section>
-
-
-        <!-- Moi-->
-        <section class="page-section about-section" id="moi">
-            <div class="container px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5 align-items-center">
-                    <div class="col-lg-6" data-aos="fade-right">
-                        <div class="about-content">
-                            <h2 class="section-title text-white mb-4">Qui suis-je ?</h2>
-                            <hr class="divider divider-light mb-4" />
-                            <p class="text-white-75 mb-4">
-                                Bonjour, je suis un jeune développeur de <span id="age" class="highlight-text"></span> ans, passionné par l'informatique depuis mon enfance.
-                            </p>
-                            <p class="text-white-75 mb-4">
-                                Ma passion pour le développement s'est conjuguée avec d'autres intérêts, notamment le dessin, la pâtisserie et la musculation. Travailler en équipe dans le basket m'a inculqué des valeurs comme la détermination et la persévérance, des qualités que je mets en pratique dans tous les aspects de ma vie, y compris dans mon travail de développement.
-                            </p>
-                            <p class="text-white-75 mb-4">
-                                Plus récemment, j'ai découvert l'impression et la modélisation 3D, ce qui a stimulé ma créativité et élargi mes compétences. Je suis motivé, rigoureux, curieux et toujours ouvert aux conseils et aux retours d'expérience pour continuer à progresser dans mon développement personnel et professionnel.
-                            </p>
-                            <div class="about-buttons mt-4">
-                                <a class="btn btn-light btn-xl btn-modern" href="#cv">
-                                    <span>Voir mon CV</span>
-                                    <i class="bi bi-file-earmark-person ms-2"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
-                        <div class="about-visual">
-                            <div class="floating-card">
-                                <div class="card-icon">
-                                    <i class="bi bi-code-slash"></i>
-                                </div>
-                                <h4>Développement</h4>
-                            </div>
-                            <div class="floating-card delay-1">
-                                <div class="card-icon">
-                                    <i class="bi bi-palette"></i>
-                                </div>
-                                <h4>Créativité</h4>
-                            </div>
-                            <div class="floating-card delay-2">
-                                <div class="card-icon">
-                                    <i class="bi bi-lightbulb"></i>
-                                </div>
-                                <h4>Innovation</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="nav-actions">
+                <button id="themeToggle" class="icon-btn" aria-label="Changer le thème">
+                    <i class="bi bi-sun"></i>
+                </button>
+                <button id="menuToggle" class="icon-btn menu-toggle" aria-label="Menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
-        </section>
-                
+        </div>
+    </nav>
 
-
-
-        <!-- CV-->
-        <section class="page-section cv-section" id="cv">
-            <div class="container px-3 px-lg-5">
-                <div class="text-center mb-5" data-aos="fade-up">
-                    <h2 class="section-title">Mon Curriculum Vitae</h2>
-                    <hr class="divider divider-primary" />
-                    <p class="text-muted section-subtitle">Téléchargez ou consultez mon CV</p>
-                </div>
-                <div class="row g-0 justify-content-center">
-                    <div class="col-lg-6 col-md-8" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="cv-container">
-                            <a href="assets/img/CV.jpeg" title="CV" class="cv-lightbox cv-preview">
-                                <div class="cv-overlay">
-                                    <i class="bi bi-zoom-in"></i>
-                                    <span>Cliquez pour agrandir</span>
-                                </div>
-                                <img class="img-fluid cv-image" src="assets/img/CV.jpeg" alt="CV de JARDY Anthony" />
-                            </a>
-                            <div class="cv-actions mt-4 text-center">
-                                <a href="assets/img/CV.jpeg" download="CV_JARDY_Anthony.pdf" class="btn btn-primary btn-modern">
-                                    <i class="bi bi-download me-2"></i>
-                                    Télécharger le CV
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <!-- ── HERO ── -->
+    <section id="hero">
+        <div class="hero-bg">
+            <div class="hero-orb orb-1"></div>
+            <div class="hero-orb orb-2"></div>
+            <div class="hero-orb orb-3"></div>
+        </div>
+        <div class="hero-content">
+            <p class="hero-eyebrow reveal">Bienvenue sur mon portfolio</p>
+            <h1 class="hero-name reveal delay-1">Anthony <span class="accent">JARDY</span></h1>
+            <p class="hero-role reveal delay-2">
+                <span class="typed-wrap">Développeur <span id="typed"></span></span>
+            </p>
+            <p class="hero-desc reveal delay-3">
+                Créateur de solutions web modernes, performantes et accessibles.
+            </p>
+            <div class="hero-cta reveal delay-4">
+                <a href="#projects" class="btn btn-primary">
+                    Voir mes projets <i class="bi bi-arrow-right ms"></i>
+                </a>
+                <a href="#contact" class="btn btn-ghost">
+                    Me contacter <i class="bi bi-chat ms"></i>
+                </a>
             </div>
-        </section>
-        
-        
-    <!-- portfolio_anthony-->
-    <section class="page-section portfolio-section" id="portfolio_anthony">
+            <div class="hero-socials reveal delay-5">
+                <a href="https://www.linkedin.com/in/anthonyjardy/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                <a href="http://github.com/despiow" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github"></i></a>
+                <a href="https://gitlab.com/anthonyjardy" target="_blank" rel="noopener" aria-label="GitLab"><i class="bi bi-gitlab"></i></a>
+            </div>
+        </div>
+        <a href="#about" class="scroll-cue" aria-label="Défiler">
+            <i class="bi bi-chevron-down"></i>
+        </a>
+    </section>
+
+    <!-- ── À PROPOS ── -->
+    <section id="about" class="section">
         <div class="container">
-            <div class="text-center mb-5" data-aos="fade-up">
-                <h2 class="section-title">Mes Projets</h2>
-                <hr class="divider divider-primary" />
-                <p class="text-muted section-subtitle">Découvrez mes réalisations</p>
+            <div class="section-header reveal">
+                <span class="section-tag">Qui suis-je ?</span>
+                <h2 class="section-title">Développeur passionné</h2>
             </div>
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="portfolio_anthony-item modern-card">
-                        <a class="portfolio_anthony-box" href="assets/img/portfolio/fullsize/1.jpg?v=20250102" title="Hypnopraticien à Bordeaux">
-                            <div class="portfolio_anthony-hover">
-                                <div class="portfolio_anthony-hover-content">
-                                    <i class="bi bi-eye-fill"></i>
-                                    <h3 class="portfolio_anthony-title">Projet professionnel</h3>
-                                    <p class="portfolio_anthony-description">Site web professionnel</p>
-                                </div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio/thumbnails/1.jpg?v=20250102" alt="Hypnopraticien à Bordeaux">
-                        </a>
-                        <div class="portfolio-info">
-                            <h4 class="portfolio-name">Projet professionnel</h4>
-                            <p class="portfolio_anthony-description">Site web professionnel </p>
-                            <a class="btn btn-outline-primary btn-sm btn-modern" href="https://projet_pro.despiow.fr" target="_blank" rel="noopener">
-                                <i class="bi bi-box-arrow-up-right me-1"></i>
-                                Visiter le site
-                            </a>
-                        </div>
-                    </div>
+            <div class="about-grid">
+                <div class="about-text reveal">
+                    <p>
+                        Bonjour, je suis Anthony, développeur web de <strong id="age"></strong> ans, passionné par l'informatique depuis mon enfance.
+                    </p>
+                    <p>
+                        Ma curiosité m'a amené à explorer la création web sous tous ses angles : du design front-end à la logique back-end. En dehors du code, le dessin, la pâtisserie et la musculation font partie de mon quotidien. Le basket m'a inculqué des valeurs comme la détermination et l'esprit d'équipe, que j'applique dans chaque projet.
+                    </p>
+                    <p>
+                        Plus récemment, j'ai découvert l'impression et la modélisation 3D, élargissant ainsi ma vision créative. Je suis rigoureux, curieux et toujours à la recherche de nouveaux défis pour progresser.
+                    </p>
+                    <a href="#cv" class="btn btn-primary mt">
+                        Voir mon CV <i class="bi bi-file-earmark-person ms"></i>
+                    </a>
                 </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="portfolio_anthony-item modern-card">
-                        <a class="portfolio_anthony-box" href="assets/img/portfolio/fullsize/2.jpg?v=20250102" title="Projet Mickalow">
-                            <div class="portfolio_anthony-hover">
-                                <div class="portfolio_anthony-hover-content">
-                                    <i class="bi bi-eye-fill"></i>
-                                    <h3 class="portfolio_anthony-title">Projet Personnel</h3>
-                                    <p class="portfolio_anthony-description">Projet réseaux sociaux pour un créateur de contenu</p>
-                                </div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio/thumbnails/2.jpg?v=20250102" alt="Projet Mickalow">
-                        </a>
-                        <div class="portfolio-info">
-                            <h4 class="portfolio-name">Projet professionnel</h4>
-                            <p class="portfolio_anthony-description">Site web pour un créateur de contenu sur Twitch</p>
-                            <a class="btn btn-outline-primary btn-sm btn-modern" href="https://mickalow.despiow.fr/" target="_blank" rel="noopener">
-                                <i class="bi bi-box-arrow-up-right me-1"></i>
-                                Visiter le site
-                            </a>
-                        </div>
+                <div class="about-cards reveal delay-2">
+                    <div class="info-card">
+                        <i class="bi bi-code-slash"></i>
+                        <h3>Développement</h3>
+                        <p>Sites web modernes et applications performantes</p>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="portfolio_anthony-item modern-card">
-                        <a class="portfolio_anthony-box" href="assets/img/portfolio/fullsize/3.jpg?v=20250102" title="Projet Magic of Disney">
-                            <div class="portfolio_anthony-hover">
-                                <div class="portfolio_anthony-hover-content">
-                                    <i class="bi bi-eye-fill"></i>
-                                    <h3 class="portfolio_anthony-title">Projet Personnel</h3>
-                                    <p class="portfolio_anthony-description">Site web pour la gestion des réseaux sociaux</p>
-                                </div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio/thumbnails/3.jpg?v=20250102" alt="Projet Magic of Disney">
-                        </a>
-                        <div class="portfolio-info">
-                            <h4 class="portfolio-name">Projet personnel</h4>
-                            <p class="portfolio_anthony-description">Site web pour la gestion des réseaux sociaux</p>
-                            <a class="btn btn-outline-primary btn-sm btn-modern" href="https://magicofdisney.despiow.fr/" target="_blank" rel="noopener">
-                                <i class="bi bi-box-arrow-up-right me-1"></i>
-                                Visiter le site
-                            </a>
-                        </div>
+                    <div class="info-card">
+                        <i class="bi bi-palette2"></i>
+                        <h3>Créativité</h3>
+                        <p>Design UI/UX soigné et expériences utilisateur intuitives</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="bi bi-printer-fill"></i>
+                        <h3>Impression 3D</h3>
+                        <p>Modélisation et fabrication additive</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="bi bi-people-fill"></i>
+                        <h3>Esprit d'équipe</h3>
+                        <p>Collaboration, communication et adaptabilité</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
-    
-        <!-- Contact-->
-        <section class="page-section contact-section" id="contact">
-            <div class="container px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-lg-8 col-xl-6 text-center" data-aos="fade-up">
-                        <h2 class="section-title">Contactez-moi</h2>
-                        <hr class="divider divider-primary" />
-                        <p class="text-muted mb-5">Tous les champs sont obligatoires</p>
-                    </div>
-                </div>
-                <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
-                    <div class="col-lg-8">
-                        <form id="contactForm" class="contact-form" action="./src/send_email.php" method="post" data-aos="fade-up" data-aos-delay="200">
-                            <div class="row">
-                                <!-- Nom input-->
-                                <div class="col-md-6 mb-3">
-                                    <div class="form-floating">
-                                        <input class="form-control modern-input" id="lastname" name="lastname" type="text" data-sb-validations="required" autocomplete="family-name" placeholder="Nom" />
-                                        <label for="lastname"><i class="bi bi-person me-2"></i>Nom</label>
-                                        <div class="invalid-feedback" data-sb-feedback="name:required">Le Nom est obligatoire.</div>
-                                    </div>
-                                </div>
-                                <!-- Prénom input-->
-                                <div class="col-md-6 mb-3">
-                                    <div class="form-floating">
-                                        <input class="form-control modern-input" id="firstname" name="firstname" type="text" data-sb-validations="required" autocomplete="given-name" placeholder="Prénom" />
-                                        <label for="firstname"><i class="bi bi-person-fill me-2"></i>Prénom</label>
-                                        <div class="invalid-feedback" data-sb-feedback="name:required">Le Prénom est obligatoire.</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Email address input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control modern-input" id="email_from" name="email_from" type="email" data-sb-validations="required,email" autocomplete="email" placeholder="Email" />
-                                <label for="email_from"><i class="bi bi-envelope me-2"></i>Email</label>
-                                <div class="invalid-feedback" data-sb-feedback="email:required">L'adresse mail est obligatoire.</div>
-                                <div class="invalid-feedback" data-sb-feedback="email:email">L'email n'est pas valide.</div>
-                            </div>
-                            <!-- Sujet input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control modern-input" id="subject" name="subject" type="text" data-sb-validations="required" autocomplete="subject" placeholder="Sujet" />
-                                <label for="subject"><i class="bi bi-tag me-2"></i>Sujet</label>
-                                <div class="invalid-feedback" data-sb-feedback="name:required">Le sujet est obligatoire.</div>
-                            </div>
-                            <!-- Message input-->
-                            <div class="form-floating mb-4">
-                                <textarea class="form-control modern-input" id="message" name="message" style="height: 10rem" data-sb-validations="required" placeholder="Message"></textarea>
-                                <label for="message"><i class="bi bi-chat-dots me-2"></i>Message</label>
-                                <div class="invalid-feedback" data-sb-feedback="message:required">Le message est obligatoire</div>
-                            </div>
-                            <!-- Messages de succès/erreur -->
-                            <div id="submitSuccessMessage" class="d-none">
-                                <div class="alert alert-success alert-dismissible fade show text-center mb-3" role="alert">
-                                    <i class="bi bi-check-circle-fill me-2"></i>
-                                    <span id="successMessageText"></span>
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                </div>
-                            </div>
-                            <div id="submitErrorMessage" class="d-none">
-                                <div class="alert alert-danger alert-dismissible fade show text-center mb-3" role="alert">
-                                    <i class="bi bi-exclamation-triangle-fill me-2"></i>
-                                    <span id="errorMessageText"></span>
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                </div>
-                            </div>
-                            <!-- Submit Button-->
-                            <div class="d-grid">
-                                <button class="btn btn-primary btn-xl btn-modern" id="submit" type="submit">
-                                    <span id="submitButtonText">Envoyer le message</span>
-                                    <i class="bi bi-send ms-2" id="submitButtonIcon"></i>
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Footer-->
-        <footer class="footer-modern">
-            <div class="container px-4 px-lg-4">
-                <div class="footer-content">
-                    <div class="footer-text">
-                        <p class="mb-2">Copyright &copy; <span id="currentYear"></span> JARDY Anthony / Despiow</p>
-                        <p class="text-muted small">Développeur Web Passionné</p>
-                    </div>
-                    <div class="footer-social">
-                        <p class="mb-2 small">Mes réseaux sociaux :</p>
-                        <div class="social-links">
-                            <a href="https://www.linkedin.com/in/anthonyjardy/" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                            <a href="http://github.com/despiow" target="_blank" rel="noopener" class="social-link" aria-label="GitHub">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://gitlab.com/anthonyjardy" target="_blank" rel="noopener" class="social-link" aria-label="GitLab">
-                                <i class="fab fa-gitlab"></i>
-                            </a>
-                        </div>
-                    </div>
+    <!-- ── COMPÉTENCES ── -->
+    <section id="skills" class="section section-alt">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Mes compétences</span>
+                <h2 class="section-title">Technologies maîtrisées</h2>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card reveal" data-delay="0">
+                    <div class="skill-icon"><i class="devicon-html5-plain colored"></i></div>
+                    <span class="skill-name">HTML5</span>
+                    <div class="skill-bar"><div class="skill-fill" data-w="90"></div></div>
+                    <span class="skill-pct">90%</span>
+                </div>
+                <div class="skill-card reveal" data-delay="1">
+                    <div class="skill-icon"><i class="devicon-css3-plain colored"></i></div>
+                    <span class="skill-name">CSS3</span>
+                    <div class="skill-bar"><div class="skill-fill" data-w="85"></div></div>
+                    <span class="skill-pct">85%</span>
+                </div>
+                <div class="skill-card reveal" data-delay="2">
+                    <div class="skill-icon"><i class="devicon-javascript-plain colored"></i></div>
+                    <span class="skill-name">JavaScript</span>
+                    <div class="skill-bar"><div class="skill-fill" data-w="80"></div></div>
+                    <span class="skill-pct">80%</span>
+                </div>
+                <div class="skill-card reveal" data-delay="3">
+                    <div class="skill-icon"><i class="devicon-php-plain colored"></i></div>
+                    <span class="skill-name">PHP</span>
+                    <div class="skill-bar"><div class="skill-fill" data-w="75"></div></div>
+                    <span class="skill-pct">75%</span>
+                </div>
+                <div class="skill-card reveal" data-delay="4">
+                    <div class="skill-icon"><i class="devicon-mysql-plain colored"></i></div>
+                    <span class="skill-name">SQL</span>
+                    <div class="skill-bar"><div class="skill-fill" data-w="70"></div></div>
+                    <span class="skill-pct">70%</span>
+                </div>
+                <div class="skill-card reveal" data-delay="5">
+                    <div class="skill-icon"><i class="devicon-bootstrap-plain colored"></i></div>
+                    <span class="skill-name">Bootstrap</span>
+                    <div class="skill-bar"><div class="skill-fill" data-w="80"></div></div>
+                    <span class="skill-pct">80%</span>
+                </div>
+                <div class="skill-card reveal" data-delay="6">
+                    <div class="skill-icon"><i class="devicon-tailwindcss-plain colored"></i></div>
+                    <span class="skill-name">Tailwind CSS</span>
+                    <div class="skill-bar"><div class="skill-fill" data-w="75"></div></div>
+                    <span class="skill-pct">75%</span>
+                </div>
+                <div class="skill-card reveal" data-delay="7">
+                    <div class="skill-icon"><i class="devicon-git-plain colored"></i></div>
+                    <span class="skill-name">Git</span>
+                    <div class="skill-bar"><div class="skill-fill" data-w="72"></div></div>
+                    <span class="skill-pct">72%</span>
                 </div>
             </div>
-        </footer>
-        
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- SimpleLightbox plugin JS-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
-        <!-- AOS - Animate On Scroll -->
-        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js?v=20250101"></script>
-    </body>
+        </div>
+    </section>
+
+    <!-- ── PROJETS ── -->
+    <section id="projects" class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Mes projets</span>
+                <h2 class="section-title">Réalisations</h2>
+            </div>
+            <div class="projects-grid">
+
+                <div class="project-card reveal" data-delay="0">
+                    <a class="project-thumb lightbox-link" href="assets/img/portfolio/fullsize/1.jpg" title="Projet professionnel — Hypnopraticien à Bordeaux">
+                        <img src="assets/img/portfolio/thumbnails/1.jpg" alt="Site Hypnopraticien à Bordeaux" loading="lazy" />
+                        <div class="project-overlay">
+                            <i class="bi bi-zoom-in"></i>
+                        </div>
+                    </a>
+                    <div class="project-body">
+                        <span class="project-type">Professionnel</span>
+                        <h3 class="project-title">Hypnopraticien à Bordeaux</h3>
+                        <p class="project-desc">Site vitrine professionnel pour un praticien en hypnothérapie.</p>
+                        <a href="https://projet_pro.despiow.fr" target="_blank" rel="noopener" class="btn btn-outline btn-sm">
+                            Visiter <i class="bi bi-box-arrow-up-right ms"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card reveal" data-delay="1">
+                    <a class="project-thumb lightbox-link" href="assets/img/portfolio/fullsize/2.jpg" title="Projet Mickalow">
+                        <img src="assets/img/portfolio/thumbnails/2.jpg" alt="Site Mickalow" loading="lazy" />
+                        <div class="project-overlay">
+                            <i class="bi bi-zoom-in"></i>
+                        </div>
+                    </a>
+                    <div class="project-body">
+                        <span class="project-type">Personnel</span>
+                        <h3 class="project-title">Mickalow</h3>
+                        <p class="project-desc">Plateforme réseaux sociaux pour un créateur de contenu Twitch.</p>
+                        <a href="https://mickalow.despiow.fr/" target="_blank" rel="noopener" class="btn btn-outline btn-sm">
+                            Visiter <i class="bi bi-box-arrow-up-right ms"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card reveal" data-delay="2">
+                    <a class="project-thumb lightbox-link" href="assets/img/portfolio/fullsize/3.jpg" title="Magic of Disney">
+                        <img src="assets/img/portfolio/thumbnails/3.jpg" alt="Site Magic of Disney" loading="lazy" />
+                        <div class="project-overlay">
+                            <i class="bi bi-zoom-in"></i>
+                        </div>
+                    </a>
+                    <div class="project-body">
+                        <span class="project-type">Personnel</span>
+                        <h3 class="project-title">Magic of Disney</h3>
+                        <p class="project-desc">Gestion et centralisation des réseaux sociaux d'une page fan Disney.</p>
+                        <a href="https://magicofdisney.despiow.fr/" target="_blank" rel="noopener" class="btn btn-outline btn-sm">
+                            Visiter <i class="bi bi-box-arrow-up-right ms"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ── CV ── -->
+    <section id="cv" class="section section-alt">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Curriculum Vitae</span>
+                <h2 class="section-title">Mon CV</h2>
+            </div>
+            <div class="cv-wrapper reveal">
+                <a href="assets/img/CV.jpeg" class="cv-preview lightbox-cv" title="CV JARDY Anthony">
+                    <img src="assets/img/CV.jpeg" alt="CV de JARDY Anthony" />
+                    <div class="cv-overlay">
+                        <i class="bi bi-zoom-in"></i>
+                        <span>Agrandir</span>
+                    </div>
+                </a>
+                <a href="assets/img/CV.jpeg" download="CV_JARDY_Anthony.jpeg" class="btn btn-primary mt">
+                    <i class="bi bi-download ms"></i> Télécharger le CV
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── CONTACT ── -->
+    <section id="contact" class="section">
+        <div class="container container-sm">
+            <div class="section-header reveal">
+                <span class="section-tag">Contact</span>
+                <h2 class="section-title">Travaillons ensemble</h2>
+                <p class="section-sub">Une idée de projet ? N'hésitez pas à me contacter.</p>
+            </div>
+            <form id="contactForm" class="contact-form reveal delay-2" action="./src/send_email.php" method="post" novalidate>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="lastname">Nom</label>
+                        <input type="text" id="lastname" name="lastname" placeholder="Dupont" autocomplete="family-name" required />
+                        <span class="field-error">Champ obligatoire</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="firstname">Prénom</label>
+                        <input type="text" id="firstname" name="firstname" placeholder="Jean" autocomplete="given-name" required />
+                        <span class="field-error">Champ obligatoire</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email_from">Email</label>
+                    <input type="email" id="email_from" name="email_from" placeholder="jean.dupont@exemple.fr" autocomplete="email" required />
+                    <span class="field-error">Email invalide</span>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Sujet</label>
+                    <input type="text" id="subject" name="subject" placeholder="Sujet de votre message" required />
+                    <span class="field-error">Champ obligatoire</span>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Bonjour, je souhaitais vous contacter au sujet de..." required></textarea>
+                    <span class="field-error">Champ obligatoire</span>
+                </div>
+                <div id="formSuccess" class="form-alert form-alert--success" hidden>
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span id="successText"></span>
+                </div>
+                <div id="formError" class="form-alert form-alert--error" hidden>
+                    <i class="bi bi-exclamation-triangle-fill"></i>
+                    <span id="errorText"></span>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+                    <span id="submitLabel">Envoyer le message</span>
+                    <i class="bi bi-send" id="submitIcon"></i>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ── FOOTER ── -->
+    <footer id="footer">
+        <div class="container footer-inner">
+            <p class="footer-copy">&copy; <span id="year"></span> JARDY Anthony / Despiow</p>
+            <div class="footer-socials">
+                <a href="https://www.linkedin.com/in/anthonyjardy/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                <a href="http://github.com/despiow" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github"></i></a>
+                <a href="https://gitlab.com/anthonyjardy" target="_blank" rel="noopener" aria-label="GitLab"><i class="bi bi-gitlab"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
+    <!-- Scripts -->
+    <script src="js/scripts.js?v=20260309"></script>
+</body>
 </html>
